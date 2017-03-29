@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using StructureMap;
+using EGuard.Data;
 
 namespace EGuard
 {
@@ -10,9 +11,13 @@ namespace EGuard
             InitializeComponent();
 
             var container = Container.For<MainRegistry>();
-            var proxy = container.GetInstance<ProxyFacade>();
 
-            proxy.Start();
+            var proxy = container.GetInstance<ProxyFacade>();
+            var categories = container.GetInstance<CategoryRepository>();
+
+            lstAllCategories.ItemsSource = categories.GetAllCategories();
+
+            //proxy.Start();
         }
     }
 }
