@@ -7,28 +7,42 @@ using System.Text.RegularExpressions;
 
 namespace EGuard.Data
 {
-    public class SiteInformationService
+    public class SiteInformationService : ISiteInformationService
     {
-        public async Task<SiteInformation> GetSiteInfoAsJson(string url)
+        public async Task<SiteInformation> GetSiteInformation(string url)
+        {
+            var content = GetPostContent(url);
+
+            var responseAsJson = await GetSiteInformationJson(content);
+            var category = CreateSiteInformationObjectFromJson(responseAsJson);
+
+            return category;
+        }
+
+        private FormUrlEncodedContent GetPostContent(string url)
+        {
+            var values = new Dictionary<string, string>
+            {
+                { "url", url }
+            };
+
+            return new FormUrlEncodedContent(values);
+        }
+
+        private async Task<string> GetSiteInformationJson(FormUrlEncodedContent content)
         {
             using (var client = new HttpClient())
             {
-                var values = new Dictionary<string, string>
-                {
-                    { "url", url }
-                };
+                client.DefaultRequestHeaders.ExpectContinue = false;
 
-                var content = new FormUrlEncodedContent(values);
                 var request = await client.PostAsync("http://sitereview.bluecoat.com/rest/categorization", content);
-                var responseString = await request.Content.ReadAsStringAsync();
+                var responseAsJson = await request.Content.ReadAsStringAsync();
 
-                var category = CreateSiteInfoJson(responseString);
-
-                return category;
+                return responseAsJson;
             }
         }
 
-        private SiteInformation CreateSiteInfoJson(string json)
+        private SiteInformation CreateSiteInformationObjectFromJson(string json)
         {
             var siteInfo = JsonConvert.DeserializeObject<SiteInformation>(json);
             siteInfo.Categorization = RemoveAnchorTagFromCategory(siteInfo.Categorization);
