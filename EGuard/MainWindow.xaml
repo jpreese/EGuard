@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EGuard"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="EGuard" Height="425" Width="575" ResizeMode="NoResize">
     <Grid>
-        
+        <Label x:Name="label" Content="Allowed Time:" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.5,2.517"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Height="29" Margin="125,10,0,0" VerticalAlignment="Top" Width="72"/>
+        <ComboBox x:Name="comboBox_Copy" HorizontalAlignment="Left" Height="29" Margin="249,10,0,0" VerticalAlignment="Top" Width="72"/>
+        <Label x:Name="label1" Content="to" HorizontalAlignment="Left" Height="24" Margin="211,10,0,0" VerticalAlignment="Top" Width="23" RenderTransformOrigin="-1.565,0.5"/>
+        <Label x:Name="label_Copy" Content="Categories:" HorizontalAlignment="Left" Height="29" Margin="10,53,0,0" VerticalAlignment="Top" Width="114" RenderTransformOrigin="0.5,2.517"/>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="113" Margin="124,53,0,0" VerticalAlignment="Top" Width="196"/>
+        <Button x:Name="button" Content="Add" HorizontalAlignment="Left" Height="21" Margin="125,171,0,0" VerticalAlignment="Top" Width="196"/>
+        <ListBox x:Name="listBox_Copy" HorizontalAlignment="Left" Height="113" Margin="335,53,0,0" VerticalAlignment="Top" Width="196"/>
+        <Button x:Name="button_Copy" Content="Remove" HorizontalAlignment="Left" Height="21" Margin="335,171,0,0" VerticalAlignment="Top" Width="196"/>
+        <Label x:Name="label_Copy1" Content="Pending Reviews:" HorizontalAlignment="Left" Height="29" Margin="10,213,0,0" VerticalAlignment="Top" Width="114" RenderTransformOrigin="0.5,2.517"/>
+        <ListBox x:Name="listBox1" HorizontalAlignment="Left" Height="119" Margin="124,226,0,0" VerticalAlignment="Top" Width="407"/>
+        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Height="29" Margin="125,350,0,0" VerticalAlignment="Top" Width="287"/>
+        <Button x:Name="button1" Content="Assign Category" HorizontalAlignment="Left" Height="29" Margin="430,350,0,0" VerticalAlignment="Top" Width="101" />
     </Grid>
 </Window>
