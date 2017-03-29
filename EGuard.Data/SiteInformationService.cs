@@ -9,7 +9,7 @@ namespace EGuard.Data
 {
     public class SiteInformationService : ISiteInformationService
     {
-        public async Task<SiteInformation> GetSiteInformation(string url)
+        public async Task<SiteInformation> GetSiteInformationAsync(string url)
         {
             var content = GetPostContent(url);
 
