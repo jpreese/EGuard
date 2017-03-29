@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryRepository.cs" />
+    <Compile Include="ISiteInformationService.cs" />
     <Compile Include="SiteInformationService.cs" />
     <Compile Include="DataRegistry.cs" />
     <Compile Include="ICategoryRepository.cs" />
