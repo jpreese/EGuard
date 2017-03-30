@@ -6,5 +6,8 @@ namespace EGuard.Data
     public interface ICategoryRepository : IRepository<Category>
     {
         IEnumerable<Category> GetAllCategories();
+        IEnumerable<Category> GetBlockedCategories();
+        void UnblockCategory(Category model);
+        void BlockCategory(Category model);
     }
 }

@@ -30,6 +30,16 @@ namespace EGuard.Data
             return _database.Query<Category>("SELECT Name FROM Category WHERE Name = @Name", new { Name = model.Name }).SingleOrDefault();
         }
 
+        public void BlockCategory(Category model)
+        {
+            _database.Execute("UPDATE Category SET Blocked = 1 WHERE Name = @Name", new { Name = model.Name });
+        }
+
+        public void UnblockCategory(Category model)
+        {
+            _database.Execute("UPDATE Category SET Blocked = 0 WHERE Name = @Name", new { Name = model.Name });
+        }
+
         public IEnumerable<Category> GetAllCategories()
         {
             return _database.Query<Category>("SELECT Name FROM Category");
