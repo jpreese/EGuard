@@ -19,6 +19,8 @@ namespace EGuard
             var categories = container.GetInstance<CategoryRepository>();
 
             lstAllCategories.ItemsSource = categories.GetAllCategories();
+            lstBlockedCategories.ItemsSource = categories.GetBlockedCategories();
+            cboAssignableCategories.ItemsSource = categories.GetAllCategories();
 
             //proxy.Start();
         }
