@@ -34,5 +34,10 @@ namespace EGuard.Data
         {
             return _database.Query<Category>("SELECT Name FROM Category");
         }
+
+        public IEnumerable<Category> GetBlockedCategories()
+        {
+            return _database.Query<Category>("SELECT Name FROM Category WHERE Blocked = 1");
+        }
     }
 }
