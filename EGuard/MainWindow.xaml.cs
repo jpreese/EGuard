@@ -9,6 +9,7 @@ namespace EGuard
     {
         private readonly IContainer _container;
         private readonly ICategoryRepository _categoryRepository;
+        private readonly IKeywordRepository _keywordRepository;
 
         public MainWindow()
         {
@@ -16,6 +17,7 @@ namespace EGuard
 
             _container = Container.For<MainRegistry>();
             _categoryRepository = _container.GetInstance<CategoryRepository>();
+            _keywordRepository = _container.GetInstance<KeywordRepository>();
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -25,8 +27,7 @@ namespace EGuard
             cboBlockableCategories.ItemsSource = _categoryRepository.GetAllCategories();
             lstBlockedCategories.ItemsSource = _categoryRepository.GetBlockedCategories();
             cboAssignableCategories.ItemsSource = _categoryRepository.GetAllCategories();
-
-            //proxy.Start();
+            lstKeywords.ItemsSource = _keywordRepository.GetAllKeywords();
         }
 
         private void btnUnblockCategory_Click(object sender, RoutedEventArgs e)
@@ -43,6 +44,27 @@ namespace EGuard
             _categoryRepository.BlockCategory(selectedCategory);
 
             lstBlockedCategories.ItemsSource = _categoryRepository.GetBlockedCategories();
+        }
+
+        private void btnBlockKeyword_Click(object sender, RoutedEventArgs e)
+        {
+            var keyword = new Keyword
+            {
+                Description = txtKeyword.Text
+            };
+
+            _keywordRepository.Add(keyword);
+            txtKeyword.Clear();
+
+            lstKeywords.ItemsSource = _keywordRepository.GetAllKeywords();
+        }
+
+        private void btnUnblockKeyword_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedKeyword = (Keyword)lstKeywords.SelectedItem;
+            _keywordRepository.Delete(selectedKeyword);
+
+            lstKeywords.ItemsSource = _keywordRepository.GetAllKeywords();
         }
     }
 }
