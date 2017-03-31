@@ -22,7 +22,7 @@ namespace EGuard
         {
             var proxy = _container.GetInstance<ProxyFacade>();
 
-            lstAllCategories.ItemsSource = _categoryRepository.GetAllCategories();
+            cboBlockableCategories.ItemsSource = _categoryRepository.GetAllCategories();
             lstBlockedCategories.ItemsSource = _categoryRepository.GetBlockedCategories();
             cboAssignableCategories.ItemsSource = _categoryRepository.GetAllCategories();
 
@@ -39,7 +39,7 @@ namespace EGuard
 
         private void btnBlockCategory_Click(object sender, RoutedEventArgs e)
         {
-            var selectedCategory = (Category)lstAllCategories.SelectedItem;
+            var selectedCategory = (Category)cboBlockableCategories.SelectedItem;
             _categoryRepository.BlockCategory(selectedCategory);
 
             lstBlockedCategories.ItemsSource = _categoryRepository.GetBlockedCategories();
