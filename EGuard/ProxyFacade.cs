@@ -1,4 +1,5 @@
 ﻿using EGuard.Data;
+using EGuard.Data.Models;
 using System.Net;
 using Titanium.Web.Proxy;
 using Titanium.Web.Proxy.EventArguments;
@@ -8,11 +9,13 @@ namespace EGuard
 {
     public class ProxyFacade
     {
-        private readonly ISiteInformationService _siteInformationService;
+        private readonly ISiteVerificationService _siteVerificationService;
+        private readonly SiteLogger _siteLogger;
 
-        public ProxyFacade(ISiteInformationService siteInformationService)
+        public ProxyFacade(ISiteVerificationService siteVerificationService, SiteLogger siteLogger)
         {
-            _siteInformationService = siteInformationService;
+            _siteVerificationService = siteVerificationService;
+            _siteLogger = siteLogger;
         }
 
         public void Start()
@@ -27,13 +30,27 @@ namespace EGuard
             ProxyServer.SetAsSystemHttpsProxy(explicitEndPoint);
         }
 
-        private async void OnRequest(object sender, SessionEventArgs e)
+        private void OnRequest(object sender, SessionEventArgs e)
         {
             var acceptHeader = e.ProxySession.Request.RequestHeaders.Find(h => h.Name == "Accept");
-            if(acceptHeader != null && acceptHeader.Value.Contains("text/html"))
+            var referer = e.ProxySession.Request.RequestHeaders.Find(h => h.Name == "Referer");
+
+            if(referer != null)
             {
-                var info = await _siteInformationService.GetSiteInformationAsync(e.ProxySession.Request.RequestUri.AbsoluteUri);
+                return;
             }
+
+            if (acceptHeader == null || acceptHeader.Value.Contains("text/html") == false)
+            {
+                return;
+            }
+
+            var site = new Site
+            {
+                Url = e.ProxySession.Request.RequestUri.AbsoluteUri.ToString()
+            };
+
+            _siteLogger.Log(site);
         }
     }
 }
