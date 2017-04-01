@@ -1,25 +1,25 @@
 ﻿using System.Windows;
-using StructureMap;
 using EGuard.Data;
 using EGuard.Data.Models;
-using System;
-using System.Windows.Controls;
+using System.ComponentModel;
 
 namespace EGuard
 {
     public partial class MainWindow : Window
     {
-        private readonly IContainer _container;
+        private readonly StructureMap.IContainer _container;
         private readonly ICategoryRepository _categoryRepository;
         private readonly IKeywordRepository _keywordRepository;
+        private readonly PasswordValidator _passwordValidator;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            _container = Container.For<MainRegistry>();
+            _container = StructureMap.Container.For<MainRegistry>();
             _categoryRepository = _container.GetInstance<CategoryRepository>();
             _keywordRepository = _container.GetInstance<KeywordRepository>();
+            _passwordValidator = new PasswordValidator();
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -31,7 +31,19 @@ namespace EGuard
             cboAssignableCategories.ItemsSource = _categoryRepository.GetAllCategories();
             lstKeywords.ItemsSource = _keywordRepository.GetAllKeywords();
 
+            //Primary.IsEnabled = false;
             //proxy.Start();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            if(_passwordValidator.Validate())
+            {
+                base.OnClosing(e);
+                return;
+            }
+
+            e.Cancel = true;
         }
 
         private void btnUnblockCategory_Click(object sender, RoutedEventArgs e)
@@ -82,7 +94,10 @@ namespace EGuard
 
         private void btnUnlock_Click(object sender, RoutedEventArgs e)
         {
-            Primary.IsEnabled = true;
+            if(_passwordValidator.Validate())
+            {
+                Primary.IsEnabled = true;
+            }
         }
     }
 }
