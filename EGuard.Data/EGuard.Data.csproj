@@ -63,13 +63,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoryRepository.cs" />
-    <Compile Include="IKeywordRepository.cs" />
-    <Compile Include="IPasswordService.cs" />
-    <Compile Include="ISiteInformationService.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\IKeywordRepository.cs" />
+    <Compile Include="Services\IPasswordService.cs" />
+    <Compile Include="Services\ISiteInformationService.cs" />
     <Compile Include="ILog.cs" />
-    <Compile Include="ISiteVerificationService.cs" />
-    <Compile Include="KeywordRepository.cs" />
+    <Compile Include="Services\ISiteVerificationService.cs" />
+    <Compile Include="Repositories\KeywordRepository.cs" />
     <Compile Include="Models\Keyword.cs" />
     <Compile Include="Models\Password.cs" />
     <Compile Include="Models\Site.cs" />
@@ -77,8 +77,8 @@
     <Compile Include="Services\PasswordServiceProxy.cs" />
     <Compile Include="Services\SiteInformationService.cs" />
     <Compile Include="DataRegistry.cs" />
-    <Compile Include="ICategoryRepository.cs" />
-    <Compile Include="IRepository.cs" />
+    <Compile Include="Repositories\ICategoryRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\SiteInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

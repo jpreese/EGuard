@@ -4,7 +4,7 @@ using EGuard.Data.Models;
 using System.Data;
 using Dapper;
 
-namespace EGuard.Data
+namespace EGuard.Data.Repositories
 {
     public class KeywordRepository : IKeywordRepository
     {

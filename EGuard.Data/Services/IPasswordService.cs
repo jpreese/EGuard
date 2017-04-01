@@ -1,6 +1,6 @@
 ﻿using EGuard.Data.Models;
 
-namespace EGuard.Data
+namespace EGuard.Data.Services
 {
     public interface IPasswordService
     {

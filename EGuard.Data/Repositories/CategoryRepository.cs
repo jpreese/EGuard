@@ -4,7 +4,7 @@ using System.Data;
 using Dapper;
 using System.Linq;
 
-namespace EGuard.Data
+namespace EGuard.Data.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {
