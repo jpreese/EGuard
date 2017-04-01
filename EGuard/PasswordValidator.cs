@@ -1,14 +1,15 @@
 ﻿using EGuard.Data;
+using EGuard.Data.Services;
 
 namespace EGuard
 {
     public class PasswordValidator
     {
-        private readonly IPasswordService _passwordService;
+        private readonly PasswordServiceProxy _passwordServiceProxy;
 
-        public PasswordValidator(IPasswordService passwordService)
+        public PasswordValidator(PasswordServiceProxy passwordServiceProxy)
         {
-            _passwordService = passwordService;
+            _passwordServiceProxy = passwordServiceProxy;
         }
 
         public bool Validate()
@@ -20,7 +21,7 @@ namespace EGuard
                 return false;
             }
 
-            var validPassword = passwordDialog.Result == _passwordService.GetPassword().Current;
+            var validPassword = passwordDialog.Result == _passwordServiceProxy.GetPassword().Current;
             return validPassword;
         }
     }
