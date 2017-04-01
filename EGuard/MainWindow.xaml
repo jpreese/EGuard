@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EGuard"
         mc:Ignorable="d"
-        Title="EGuard" Height="525" Width="475" ResizeMode="NoResize" Loaded="MainWindow_Loaded">
+        Title="EGuard" Height="575" Width="475" ResizeMode="NoResize" Loaded="MainWindow_Loaded">
     <Grid>
         <ComboBox x:Name="cboAssignableCategories" HorizontalAlignment="Left" Height="29" Margin="18,441,0,0" VerticalAlignment="Top" Width="315"/>
         <ComboBox x:Name="cboBlockableCategories" HorizontalAlignment="Left" Height="32" Margin="18,133,0,0" VerticalAlignment="Top" Width="197"/>
@@ -64,22 +64,26 @@
         </ComboBox>
 
         <Label Content="to" HorizontalAlignment="Left" Height="24" Margin="101,248,0,0" VerticalAlignment="Top" Width="23" RenderTransformOrigin="-1.565,0.5"/>
-        
+
         <ListBox x:Name="lstKeywords" HorizontalAlignment="Left" Height="85" Margin="243,43,0,0" VerticalAlignment="Top" Width="197" FontSize="10.667"/>
         <ListBox x:Name="lstPendingSites" HorizontalAlignment="Left" Height="119" Margin="18,317,0,0" VerticalAlignment="Top" Width="421"/>
         <ListBox x:Name="lstBlockedCategories" HorizontalAlignment="Left" Height="85" Margin="18,43,0,0" VerticalAlignment="Top" Width="197" FontSize="10.667" RenderTransformOrigin="0.495,2.148"/>
-        
-        <Button x:Name="btnBlockKeyword" Content="Add" HorizontalAlignment="Left" Height="21" Margin="243,170,0,0" VerticalAlignment="Top" Width="90" Click="btnBlockKeyword_Click" />
-        <Button x:Name="btnUnblockKeyword" Content="Remove" HorizontalAlignment="Left" Height="21" Margin="349,170,0,0" VerticalAlignment="Top" Width="90" Click="btnUnblockKeyword_Click" />
-        <Button x:Name="btnAssignCategory" Content="Assign Category" HorizontalAlignment="Left" Height="29" Margin="338,441,0,0" VerticalAlignment="Top" Width="101" />
-        <Button x:Name="btnBlockCategory" Content="Add" HorizontalAlignment="Left" Height="21" Margin="18,170,0,0" VerticalAlignment="Top" Width="90" Click="btnBlockCategory_Click" />
-        <Button x:Name="btnUnblockCategory" Content="Remove" HorizontalAlignment="Left" Height="21" Margin="125,170,0,0" VerticalAlignment="Top" Width="90" Click="btnUnblockCategory_Click" />
+
+        <Button x:Name="btnBlockKeyword" Content="Add" HorizontalAlignment="Left" Height="29" Margin="243,170,0,0" VerticalAlignment="Top" Width="90" Click="btnBlockKeyword_Click" />
+        <Button x:Name="btnUnblockKeyword" Content="Remove" HorizontalAlignment="Left" Height="29" Margin="349,170,0,0" VerticalAlignment="Top" Width="90" Click="btnUnblockKeyword_Click" />
+        <Button x:Name="btnAssignCategory" Content="Assign Category" HorizontalAlignment="Left" Height="29" Margin="338,441,0,0" VerticalAlignment="Top" Width="101" Click="btnAssignCategory_Click" />
+        <Button x:Name="btnBlockCategory" Content="Add" HorizontalAlignment="Left" Height="29" Margin="18,170,0,0" VerticalAlignment="Top" Width="90" Click="btnBlockCategory_Click" />
+        <Button x:Name="btnUnblockCategory" Content="Remove" HorizontalAlignment="Left" Height="29" Margin="125,170,0,0" VerticalAlignment="Top" Width="90" Click="btnUnblockCategory_Click" />
+        <Button x:Name="btnLock" Content="Lock" HorizontalAlignment="Left" Height="29" Margin="17,492,0,0" VerticalAlignment="Top" Width="90" Click="btnLock_Click"/>
+        <Button x:Name="btnUnlock" Content="Unlock" HorizontalAlignment="Left" Height="29" Margin="125,492,0,0" VerticalAlignment="Top" Width="90"/>
 
         <TextBox x:Name="txtKeyword" HorizontalAlignment="Left" Height="32" Margin="243,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
 
-        <GroupBox Header="Blocked Keywords" HorizontalAlignment="Left" Height="181" Margin="230,21,0,0" VerticalAlignment="Top" Width="221" Panel.ZIndex="-1" />
-        <GroupBox Header="Blocked Categories" HorizontalAlignment="Left" Height="181" Margin="6,21,0,0" VerticalAlignment="Top" Width="221" Panel.ZIndex="-1"/>
+        <GroupBox Header="Blocked Keywords" HorizontalAlignment="Left" Height="190" Margin="230,21,0,0" VerticalAlignment="Top" Width="221" Panel.ZIndex="-1" />
+        <GroupBox Header="Blocked Categories" HorizontalAlignment="Left" Height="190" Margin="6,21,0,0" VerticalAlignment="Top" Width="221" Panel.ZIndex="-1"/>
         <GroupBox Header="Pending Reviews" HorizontalAlignment="Left" Height="183" Margin="6,298,0,0" VerticalAlignment="Top" Width="447" Panel.ZIndex="-1"/>
         <GroupBox Header="Allowed Time" HorizontalAlignment="Left" Height="74" Margin="6,219,0,0" VerticalAlignment="Top" Width="447" Panel.ZIndex="-1"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="29" Margin="362,492,-30,0" VerticalAlignment="Top" Width="137" Source="/Resources/logo.jpg" Panel.ZIndex="1"/>
+        <Canvas HorizontalAlignment="Left" Height="100" Margin="10,511,0,-90" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>

@@ -2,6 +2,8 @@
 using StructureMap;
 using EGuard.Data;
 using EGuard.Data.Models;
+using System;
+using System.Windows.Controls;
 
 namespace EGuard
 {
@@ -29,7 +31,7 @@ namespace EGuard
             cboAssignableCategories.ItemsSource = _categoryRepository.GetAllCategories();
             lstKeywords.ItemsSource = _keywordRepository.GetAllKeywords();
 
-            proxy.Start();
+            //proxy.Start();
         }
 
         private void btnUnblockCategory_Click(object sender, RoutedEventArgs e)
@@ -67,6 +69,14 @@ namespace EGuard
             _keywordRepository.Delete(selectedKeyword);
 
             lstKeywords.ItemsSource = _keywordRepository.GetAllKeywords();
+        }
+
+        private void btnAssignCategory_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void btnLock_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }
