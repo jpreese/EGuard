@@ -92,6 +92,10 @@ namespace EGuard
             Primary.IsEnabled = false;
         }
 
+        private void btnCreateReport_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
         private void btnUnlock_Click(object sender, RoutedEventArgs e)
         {
             if(_passwordValidator.Validate())
