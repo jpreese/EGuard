@@ -11,6 +11,8 @@ namespace EGuard
         private readonly ICategoryRepository _categoryRepository;
         private readonly IKeywordRepository _keywordRepository;
         private readonly PasswordValidator _passwordValidator;
+        private readonly ReportGenerator _reportGenerator;
+        private readonly ReportViewer _reportViewer;
 
         public MainWindow()
         {
@@ -19,7 +21,9 @@ namespace EGuard
             _container = StructureMap.Container.For<MainRegistry>();
             _categoryRepository = _container.GetInstance<CategoryRepository>();
             _keywordRepository = _container.GetInstance<KeywordRepository>();
-            _passwordValidator = new PasswordValidator();
+            _reportGenerator = _container.GetInstance<ReportGenerator>();
+            _passwordValidator = _container.GetInstance<PasswordValidator>();
+            _reportViewer = _container.GetInstance<ReportViewer>();
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -94,6 +98,8 @@ namespace EGuard
 
         private void btnCreateReport_Click(object sender, RoutedEventArgs e)
         {
+            _reportGenerator.Generate();
+            _reportViewer.View();
         }
 
         private void btnUnlock_Click(object sender, RoutedEventArgs e)
