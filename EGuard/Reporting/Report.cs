@@ -1,4 +1,4 @@
-﻿namespace EGuard
+﻿namespace EGuard.Reporting
 {
     public abstract class Report
     {

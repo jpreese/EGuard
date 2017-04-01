@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 
-namespace EGuard
+namespace EGuard.Reporting
 {
     public class ReportViewer : Report
     {
