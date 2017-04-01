@@ -2,7 +2,7 @@
 
 namespace EGuard.Data.Services
 {
-    public class PasswordServiceProxy
+    public class PasswordServiceProxy : IPasswordService
     {
         private readonly IPasswordService _passwordService;
         private static Password _cache;
