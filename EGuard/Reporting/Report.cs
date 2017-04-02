@@ -2,6 +2,6 @@
 {
     public abstract class Report
     {
-        protected string FileName { get; set; } = "report.txt";
+        protected string FileName { get; } = "report.txt";
     }
 }
