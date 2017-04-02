@@ -65,16 +65,16 @@
   <ItemGroup>
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\IKeywordRepository.cs" />
-    <Compile Include="Services\IPasswordService.cs" />
+    <Compile Include="Services\IAuthorizationService.cs" />
     <Compile Include="Services\ISiteInformationService.cs" />
     <Compile Include="ILog.cs" />
     <Compile Include="Services\ISiteVerificationService.cs" />
     <Compile Include="Repositories\KeywordRepository.cs" />
     <Compile Include="Models\Keyword.cs" />
-    <Compile Include="Models\Password.cs" />
+    <Compile Include="Models\Authorization.cs" />
     <Compile Include="Models\Site.cs" />
-    <Compile Include="Services\PasswordService.cs" />
-    <Compile Include="Services\PasswordServiceProxy.cs" />
+    <Compile Include="Services\AuthorizationService.cs" />
+    <Compile Include="Services\AuthorizationServiceProxy.cs" />
     <Compile Include="Services\SiteInformationService.cs" />
     <Compile Include="DataRegistry.cs" />
     <Compile Include="Repositories\ICategoryRepository.cs" />

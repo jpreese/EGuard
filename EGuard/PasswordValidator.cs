@@ -5,11 +5,11 @@ namespace EGuard
 {
     public class PasswordValidator
     {
-        private readonly PasswordServiceProxy _passwordServiceProxy;
+        private readonly AuthorizationServiceProxy _authorizationServiceProxy;
 
-        public PasswordValidator(PasswordServiceProxy passwordServiceProxy)
+        public PasswordValidator(AuthorizationServiceProxy authorizationServiceProxy)
         {
-            _passwordServiceProxy = passwordServiceProxy;
+            _authorizationServiceProxy = authorizationServiceProxy;
         }
 
         public bool Validate()
@@ -21,7 +21,7 @@ namespace EGuard
                 return false;
             }
 
-            var validPassword = passwordDialog.Result == _passwordServiceProxy.GetPassword().Current;
+            var validPassword = passwordDialog.Result == _authorizationServiceProxy.GetAuthorization().Password;
             return validPassword;
         }
     }
