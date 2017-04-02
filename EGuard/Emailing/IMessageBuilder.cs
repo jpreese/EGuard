@@ -1,4 +1,6 @@
-﻿namespace EGuard.Emailing
+﻿using System.Net.Mail;
+
+namespace EGuard.Emailing
 {
     public interface IMessageBuilder
     {
@@ -6,6 +8,6 @@
         void SetTo();
         void SetSubject();
         void SetBody();
-        Message CreateMessage();
+        MailMessage CreateMessage();
     }
 }

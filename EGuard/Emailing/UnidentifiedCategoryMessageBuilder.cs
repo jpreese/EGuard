@@ -1,15 +1,17 @@
-﻿namespace EGuard.Emailing
+﻿using System.Net.Mail;
+
+namespace EGuard.Emailing
 {
     class UnidentifiedCategoryMessageBuilder : IMessageBuilder
     {
-        private Message message;
+        private MailMessage message;
 
         public UnidentifiedCategoryMessageBuilder()
         {
-            message = new Message();
+            message = new MailMessage();
         }
 
-        public Message CreateMessage()
+        public MailMessage CreateMessage()
         {
             return message;
         }
@@ -21,7 +23,7 @@
 
         public void SetFrom()
         {
-            message.From = "noreply@eguard.com";
+            message.From = new MailAddress("eguardtester@gmail.com");
         }
 
         public void SetSubject()
@@ -31,7 +33,7 @@
 
         public void SetTo()
         {
-            message.To = "frogub@gmail.com";
+            message.To.Add(new MailAddress("eguardtester@gmail.com"));
         }
     }
 }

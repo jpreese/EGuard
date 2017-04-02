@@ -1,7 +1,9 @@
-﻿namespace EGuard.Emailing
+﻿using System.Net.Mail;
+
+namespace EGuard.Emailing
 {
     public interface IEmailComposer
     {
-        Message Compose();
+        MailMessage Compose();
     }
 }
