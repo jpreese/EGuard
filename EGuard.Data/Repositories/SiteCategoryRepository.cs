@@ -3,6 +3,7 @@ using System.Data;
 using Dapper;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace EGuard.Data.Repositories
 {
@@ -33,6 +34,11 @@ namespace EGuard.Data.Repositories
         public IEnumerable<Site> GetPendingSites()
         {
             return _database.Query<Site>("SELECT Url FROM Site_Category WHERE Category IS NULL");
+        }
+
+        public void UpdateWithCategory(Site site)
+        {
+            _database.Execute("UPDATE Site_Category SET Category = @Category WHERE Url = @Url", new { Category = site.Category, Url = site.Url });
         }
     }
 }
