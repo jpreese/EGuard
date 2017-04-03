@@ -1,17 +1,18 @@
-﻿using System;
+﻿using EGuard.Data.Models;
+using System;
 
 namespace EGuard.Rules
 {
     public class TimeRule : IRule
     {
-        public bool Check()
+        public bool Check(Site site)
         {
             var primary = new MainWindow();
             var startTime = TimeSpan.Parse(primary.cboStartTime.SelectedValue.ToString());
             var endTime = TimeSpan.Parse(primary.cboEndTime.SelectedValue.ToString());
-            var currentTime = DateTime.Now.TimeOfDay;
+            var requestTime = TimeSpan.Parse(site.Date);
 
-            var withinAllowedTime = currentTime >= startTime && currentTime <= endTime;
+            var withinAllowedTime = requestTime >= startTime && requestTime <= endTime;
 
             return withinAllowedTime;
         }
