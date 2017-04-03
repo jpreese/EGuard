@@ -95,6 +95,7 @@
     <Compile Include="Reporting\ReportGenerator.cs" />
     <Compile Include="Reporting\ReportViewer.cs" />
     <Compile Include="Rules\IRule.cs" />
+    <Compile Include="Rules\RuleChecker.cs" />
     <Compile Include="Rules\TimeRule.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
