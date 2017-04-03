@@ -97,6 +97,7 @@
     <Compile Include="Rules\IRule.cs" />
     <Compile Include="Rules\RuleChecker.cs" />
     <Compile Include="Rules\TimeRule.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
