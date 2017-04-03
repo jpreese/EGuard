@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace EGuard
 {
-    class BlockedSiteHtmlGenerator
+    public class BlockedSiteHtmlGenerator
     {
         public string GetHtml()
         {
