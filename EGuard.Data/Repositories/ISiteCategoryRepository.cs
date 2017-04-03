@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace EGuard.Data.Repositories
 {
-    public interface ISiteCategoryRepository : IRepository<SiteCategory>
+    public interface ISiteCategoryRepository : IRepository<Site>
     {
-        IEnumerable<SiteCategory> GetPendingSites();
+        IEnumerable<Site> GetPendingSites();
     }
 }
