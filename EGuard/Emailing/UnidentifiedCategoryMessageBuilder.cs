@@ -18,7 +18,8 @@ namespace EGuard.Emailing
 
         public void SetBody()
         {
-            message.Body = "email from eguard";
+            message.Body = "This is an automated message from the EGuard system letting you know that you have a new unidentified website. ";
+            message.Body = message.Body + "Please review the website at your earliest convenience.";
         }
 
         public void SetFrom()
