@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using EGuard.Data.Models;
 using System.Data;
 using Dapper;
+using System.Linq;
 
 namespace EGuard.Data.Repositories
 {
@@ -27,7 +27,7 @@ namespace EGuard.Data.Repositories
 
         public Keyword Get(Keyword model)
         {
-            throw new NotImplementedException();
+            return _database.Query<Keyword>("SELECT Description FROM Keyword WHERE Description = @Description", new { Description = model.Description }).SingleOrDefault();
         }
 
         public IEnumerable<Keyword> GetAllKeywords()
