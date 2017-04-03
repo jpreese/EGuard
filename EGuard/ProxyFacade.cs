@@ -5,6 +5,8 @@ using System.Net;
 using Titanium.Web.Proxy;
 using Titanium.Web.Proxy.EventArguments;
 using Titanium.Web.Proxy.Models;
+using EGuard.Rules;
+using System;
 
 namespace EGuard
 {
@@ -12,11 +14,19 @@ namespace EGuard
     {
         private readonly ISiteVerificationService _siteVerificationService;
         private readonly SiteLogger _siteLogger;
+        private readonly RuleChecker _ruleChecker;
+        private readonly BlockedSiteHtmlGenerator _blockedSiteHtmlGenerator;
 
-        public ProxyFacade(ISiteVerificationService siteVerificationService, SiteLogger siteLogger)
+        public ProxyFacade(
+            ISiteVerificationService siteVerificationService, 
+            SiteLogger siteLogger, 
+            RuleChecker ruleChecker,
+            BlockedSiteHtmlGenerator blockedSiteHtmlGenerator)
         {
             _siteVerificationService = siteVerificationService;
             _siteLogger = siteLogger;
+            _ruleChecker = ruleChecker;
+            _blockedSiteHtmlGenerator = blockedSiteHtmlGenerator;
         }
 
         public void Start()
@@ -42,10 +52,16 @@ namespace EGuard
 
             var site = new Site
             {
-                Url = e.ProxySession.Request.RequestUri.AbsoluteUri.ToString()
+                Url = e.ProxySession.Request.RequestUri.AbsoluteUri.ToString(),
+                Date = DateTime.Now.TimeOfDay.ToString()
             };
 
             _siteLogger.Log(site);
+
+            if(_ruleChecker.CheckRules(site) == false)
+            {
+                //e.Ok(_blockedSiteHtmlGenerator.GetHtml());
+            }
         }
 
         private bool IsValidRequest(SessionEventArgs e)
