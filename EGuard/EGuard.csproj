@@ -78,6 +78,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BlockedSiteHtmlGenerator.cs" />
     <Compile Include="Emailing\EmailComposer.cs" />
     <Compile Include="Emailing\EmailSender.cs" />
     <Compile Include="Emailing\IEmailComposer.cs" />
@@ -150,6 +151,7 @@
     <Content Include="makecert.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\blocked.html" />
     <Resource Include="Resources\logo.jpg" />
   </ItemGroup>
   <ItemGroup />
