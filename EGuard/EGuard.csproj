@@ -84,6 +84,7 @@
     <Compile Include="Emailing\IEmailComposer.cs" />
     <Compile Include="Emailing\IEmailSender.cs" />
     <Compile Include="Emailing\IMessageBuilder.cs" />
+    <Compile Include="Emailing\UnidentifiedCategoryMailer.cs" />
     <Compile Include="Emailing\UnidentifiedCategoryMessageBuilder.cs" />
     <Compile Include="MainRegistry.cs" />
     <Compile Include="PasswordDialog.xaml.cs">
@@ -94,9 +95,11 @@
     <Compile Include="Reporting\Report.cs" />
     <Compile Include="Reporting\ReportGenerator.cs" />
     <Compile Include="Reporting\ReportViewer.cs" />
+    <Compile Include="Rules\BlockedCategoryRule.cs" />
     <Compile Include="Rules\IRule.cs" />
     <Compile Include="Rules\RuleChecker.cs" />
     <Compile Include="Rules\TimeRule.cs" />
+    <Compile Include="Rules\UnidentifiedCategoryRule.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
