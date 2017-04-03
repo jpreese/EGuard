@@ -2,6 +2,7 @@
 using EGuard.Data.Repositories;
 using EGuard.Data.Models;
 using EGuard.Reporting;
+using EGuard.ViewModels;
 using System.ComponentModel;
 
 namespace EGuard
@@ -16,9 +17,19 @@ namespace EGuard
         private readonly ReportGenerator _reportGenerator;
         private readonly ReportViewer _reportViewer;
 
+        public static MainViewModel ViewModel;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            ViewModel = new MainViewModel
+            {
+                StartTime = "09:00",
+                EndTime = "17:00"
+            };
+
+            DataContext = ViewModel;
 
             _container = StructureMap.Container.For<MainRegistry>();
             _categoryRepository = _container.GetInstance<CategoryRepository>();
@@ -38,7 +49,6 @@ namespace EGuard
             cboAssignableCategories.ItemsSource = _categoryRepository.GetAllCategories();
             lstKeywords.ItemsSource = _keywordRepository.GetAllKeywords();
             lstPendingSites.ItemsSource = _siteCategoryRepository.GetPendingSites();
-
 
             //Primary.IsEnabled = false;
             //proxy.Start();
