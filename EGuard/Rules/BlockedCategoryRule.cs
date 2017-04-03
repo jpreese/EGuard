@@ -10,6 +10,8 @@ namespace EGuard.Rules
         private readonly ISiteInformationService _siteInformationService;
         private readonly ICategoryRepository _categoryRepository;
 
+        public int Priority { get; } = 2;
+
         public BlockedCategoryRule(ISiteInformationService siteInformationService, ICategoryRepository categoryRepository)
         {
             _siteInformationService = siteInformationService;

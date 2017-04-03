@@ -5,6 +5,8 @@ namespace EGuard.Rules
 {
     public class TimeRule : IRule
     {
+        public int Priority { get; } = 1;
+
         public bool Check(Site site)
         {
             var startTime = TimeSpan.Parse(MainWindow.ViewModel.StartTime);
