@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using EGuard.Data.Repositories;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace EGuard.ViewModels
 {
@@ -6,13 +8,23 @@ namespace EGuard.ViewModels
     {
         private string _startTime;
         private string _endTime;
-        private string _test;
+        private ObservableCollection<string> _pendingUrls = new ObservableCollection<string>();
+
+        private readonly ISiteCategoryRepository _siteCategoryRepository;
+
+        public MainViewModel(ISiteCategoryRepository siteCategoryRepository)
+        {
+            _siteCategoryRepository = siteCategoryRepository;
+            _startTime = "09:00";
+            _endTime = "17:00";
+            _pendingUrls = new ObservableCollection<string>(_siteCategoryRepository.GetPendingUrls());
+        }
 
         public string StartTime
         {
             get
             {
-               return _startTime; ;
+               return _startTime;
             }
             set
             {
@@ -31,6 +43,19 @@ namespace EGuard.ViewModels
             {
                 _endTime = value;
                 OnPropertyChanged("EndTime");
+            }
+        }
+
+        public ObservableCollection<string> PendingSites
+        {
+            get
+            {
+                return _pendingUrls;
+            }
+            set
+            {
+                _pendingUrls = value;
+                OnPropertyChanged("PendingSites");
             }
         }
 
