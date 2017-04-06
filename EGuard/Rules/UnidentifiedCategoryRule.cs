@@ -26,7 +26,7 @@ namespace EGuard.Rules
             if(category.Categorization.Equals("Uncategorized"))
             {
                 _unidentifiedCategoryMailer.SendMail();
-                _siteCategoryRepository.Add(site);
+                MainWindow.ViewModel.PendingUrls.Add(site.Url);
                 return false;
             }
 
