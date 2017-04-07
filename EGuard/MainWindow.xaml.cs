@@ -46,7 +46,7 @@ namespace EGuard
             lstKeywords.ItemsSource = _keywordRepository.GetAllKeywords();
 
             //Primary.IsEnabled = false;
-            //proxy.Start();
+            proxy.Start();
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -99,16 +99,17 @@ namespace EGuard
 
         private void btnAssignCategory_Click(object sender, RoutedEventArgs e)
         {
-            var selectedUrl = (Site)lstPendingSites.SelectedItem;
+            var selectedUrl = (string)lstPendingSites.SelectedItem;
             var selectedCategory = (Category)cboAssignableCategories.SelectedItem;
 
             var updatedSite = new Site
             {
-                Url = selectedUrl.Url,
+                Url = selectedUrl,
                 Category = selectedCategory.Name
             };
 
             _siteCategoryRepository.UpdateWithCategory(updatedSite);
+            MainWindow.ViewModel.PendingUrls.Remove(updatedSite.Url);
         }
 
         private void btnLock_Click(object sender, RoutedEventArgs e)
