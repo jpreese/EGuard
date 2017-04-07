@@ -45,7 +45,7 @@ namespace EGuard
             cboAssignableCategories.ItemsSource = _categoryRepository.GetAllCategories();
             lstKeywords.ItemsSource = _keywordRepository.GetAllKeywords();
 
-            //Primary.IsEnabled = false;
+            Primary.IsEnabled = false;
             proxy.Start();
         }
 
