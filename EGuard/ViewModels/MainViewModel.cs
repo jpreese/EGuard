@@ -28,6 +28,10 @@ namespace EGuard.ViewModels
             _pendingUrls.CollectionChanged += OnPendingUrlsChanged;
         }
 
+        public string KeyPresses { get; set; }
+
+        public DateTime ApplicationStartTime { get; } = DateTime.Now;
+
         public string StartTime
         {
             get
