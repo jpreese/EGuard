@@ -50,7 +50,7 @@ namespace EGuard
             _keyboardListener.KeyDown += new RawKeyEventHandler(KeyListener_KeyDown);
 
             Primary.IsEnabled = false;
-            //proxy.Start();
+            proxy.Start();
         }
 
         private void KeyListener_KeyDown(object sender, RawKeyEventArgs args)
