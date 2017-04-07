@@ -12,18 +12,12 @@ namespace EGuard
 {
     public class ProxyFacade
     {
-        private readonly ISiteVerificationService _siteVerificationService;
         private readonly SiteLogger _siteLogger;
         private readonly RuleChecker _ruleChecker;
         private readonly BlockedSiteHtmlGenerator _blockedSiteHtmlGenerator;
 
-        public ProxyFacade(
-            ISiteVerificationService siteVerificationService, 
-            SiteLogger siteLogger, 
-            RuleChecker ruleChecker,
-            BlockedSiteHtmlGenerator blockedSiteHtmlGenerator)
+        public ProxyFacade(SiteLogger siteLogger, RuleChecker ruleChecker, BlockedSiteHtmlGenerator blockedSiteHtmlGenerator)
         {
-            _siteVerificationService = siteVerificationService;
             _siteLogger = siteLogger;
             _ruleChecker = ruleChecker;
             _blockedSiteHtmlGenerator = blockedSiteHtmlGenerator;
@@ -60,7 +54,7 @@ namespace EGuard
 
             if(_ruleChecker.CheckRules(site) == false)
             {
-                //e.Ok(_blockedSiteHtmlGenerator.GetHtml());
+                e.Ok(_blockedSiteHtmlGenerator.GetHtml());
             }
         }
 
