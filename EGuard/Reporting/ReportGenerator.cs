@@ -29,6 +29,8 @@ namespace EGuard.Reporting
                 sw.WriteLine("======= Keys =======");
                 sw.Write(FormatNewLines(MainWindow.ViewModel.KeyPresses));
 
+                sw.WriteLine("");
+
                 sw.WriteLine("======= Processes =======");
                 foreach(var process in Process.GetProcesses())
                 {
