@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EGuard", "EGuard.csproj", "{38510D8F-442B-470C-8D45-6C84BE3A63A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EGuard.Data", "..\EGuard.Data\EGuard.Data.csproj", "{61E39CDB-B72A-42FC-95B6-804B96B052ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38510D8F-442B-470C-8D45-6C84BE3A63A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38510D8F-442B-470C-8D45-6C84BE3A63A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38510D8F-442B-470C-8D45-6C84BE3A63A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38510D8F-442B-470C-8D45-6C84BE3A63A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61E39CDB-B72A-42FC-95B6-804B96B052ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61E39CDB-B72A-42FC-95B6-804B96B052ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61E39CDB-B72A-42FC-95B6-804B96B052ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61E39CDB-B72A-42FC-95B6-804B96B052ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
