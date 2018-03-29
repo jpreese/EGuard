@@ -1,4 +1,4 @@
-﻿using System;
+﻿using EGuard.Data;
 using System.Net;
 using Titanium.Web.Proxy;
 using Titanium.Web.Proxy.EventArguments;
@@ -8,7 +8,14 @@ namespace EGuard
 {
     public class ProxyFacade
     {
-        public static void Start()
+        private readonly ISiteInformationService _siteInformationService;
+
+        public ProxyFacade(ISiteInformationService siteInformationService)
+        {
+            _siteInformationService = siteInformationService;
+        }
+
+        public void Start()
         {
             var explicitEndPoint = new ExplicitProxyEndPoint(IPAddress.Any, 8000, true);
             ProxyServer.AddEndPoint(explicitEndPoint);
@@ -20,28 +27,13 @@ namespace EGuard
             ProxyServer.SetAsSystemHttpsProxy(explicitEndPoint);
         }
 
-        private static void OnRequest(object sender, SessionEventArgs e)
+        private async void OnRequest(object sender, SessionEventArgs e)
         {
             var acceptHeader = e.ProxySession.Request.RequestHeaders.Find(h => h.Name == "Accept");
             if(acceptHeader != null && acceptHeader.Value.Contains("text/html"))
             {
-                Console.WriteLine(e.ProxySession.Request.Url);
+                var info = await _siteInformationService.GetSiteInformation(e.ProxySession.Request.RequestUri.AbsoluteUri);
             }
-        }
-
-        private bool ShouldBlockWebsite(string url)
-        {
-            // send POST request to blue coat
-            // receive JSON
-            // parse/structure JSON
-            // get the category of website
-
-            // 1) check system time vs. time restriction in database
-            // 2) if category not found, block it
-            // 3) check blocked categories in database
-            // 4) if none of the above, allow
-
-            return false;
         }
     }
 }
