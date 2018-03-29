@@ -5,6 +5,6 @@ namespace EGuard.Data
 {
     public interface ISiteInformationService
     {
-        Task<SiteInformation> GetSiteInformation(string url);
+        Task<SiteInformation> GetSiteInformationAsync(string url);
     }
 }

@@ -32,7 +32,7 @@ namespace EGuard
             var acceptHeader = e.ProxySession.Request.RequestHeaders.Find(h => h.Name == "Accept");
             if(acceptHeader != null && acceptHeader.Value.Contains("text/html"))
             {
-                var info = await _siteInformationService.GetSiteInformation(e.ProxySession.Request.RequestUri.AbsoluteUri);
+                var info = await _siteInformationService.GetSiteInformationAsync(e.ProxySession.Request.RequestUri.AbsoluteUri);
             }
         }
     }
