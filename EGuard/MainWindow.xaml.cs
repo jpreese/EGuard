@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using EGuard.Data;
+using StructureMap;
 
 namespace EGuard
 {
@@ -8,12 +8,11 @@ namespace EGuard
         public MainWindow()
         {
             InitializeComponent();
-            var c = new SiteInformationService();
-            var t = c.GetSiteInfoAsJson("http://www.reddit.com");
 
+            var container = Container.For<MainRegistry>();
+            var proxy = container.GetInstance<ProxyFacade>();
 
-
-            //ProxyFacade.Start();
+            proxy.Start();
         }
     }
 }
