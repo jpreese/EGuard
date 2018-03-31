@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EGuard"
         mc:Ignorable="d"
-        Title="EGuard" Height="425" Width="575" ResizeMode="NoResize" Loaded="MainWindow_Loaded">
+        Title="EGuard" Height="525" Width="475" ResizeMode="NoResize" Loaded="MainWindow_Loaded">
     <Grid>
-        <ComboBox x:Name="cboStartTime" HorizontalAlignment="Left" Height="29" Margin="125,10,0,0" VerticalAlignment="Top" Width="72" SelectedIndex="9">
+        <ComboBox x:Name="cboAssignableCategories" HorizontalAlignment="Left" Height="29" Margin="18,441,0,0" VerticalAlignment="Top" Width="315"/>
+        <ComboBox x:Name="cboBlockableCategories" HorizontalAlignment="Left" Height="32" Margin="18,133,0,0" VerticalAlignment="Top" Width="197"/>
+        <ComboBox x:Name="cboStartTime" HorizontalAlignment="Left" Height="29" Margin="17,248,0,0" VerticalAlignment="Top" Width="72" SelectedIndex="9">
             <ComboBoxItem>00:00</ComboBoxItem>
             <ComboBoxItem>01:00</ComboBoxItem>
             <ComboBoxItem>02:00</ComboBoxItem>
@@ -34,7 +36,7 @@
             <ComboBoxItem>23:00</ComboBoxItem>
         </ComboBox>
 
-        <ComboBox x:Name="cboEndTime" HorizontalAlignment="Left" Height="29" Margin="249,10,0,0" VerticalAlignment="Top" Width="72" SelectedIndex="17">
+        <ComboBox x:Name="cboEndTime" HorizontalAlignment="Left" Height="29" Margin="139,248,0,0" VerticalAlignment="Top" Width="72" SelectedIndex="17">
             <ComboBoxItem>00:00</ComboBoxItem>
             <ComboBoxItem>01:00</ComboBoxItem>
             <ComboBoxItem>02:00</ComboBoxItem>
@@ -61,19 +63,23 @@
             <ComboBoxItem>23:00</ComboBoxItem>
         </ComboBox>
 
-        <ComboBox x:Name="cboAssignableCategories" HorizontalAlignment="Left" Height="29" Margin="125,350,0,0" VerticalAlignment="Top" Width="287" SelectedIndex="0"/>
-
-        <Label Content="Allowed Time:" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.5,2.517"/>
-        <Label Content="to" HorizontalAlignment="Left" Height="24" Margin="211,10,0,0" VerticalAlignment="Top" Width="23" RenderTransformOrigin="-1.565,0.5"/>
-        <Label Content="Categories:" HorizontalAlignment="Left" Height="29" Margin="10,53,0,0" VerticalAlignment="Top" Width="114" RenderTransformOrigin="0.5,2.517"/>
-        <Label Content="Pending Reviews:" HorizontalAlignment="Left" Height="29" Margin="10,213,0,0" VerticalAlignment="Top" Width="114" RenderTransformOrigin="0.5,2.517"/>
-
-        <ListBox x:Name="lstAllCategories" HorizontalAlignment="Left" Height="113" Margin="124,53,0,0" VerticalAlignment="Top" Width="196" FontSize="10.667"/>
-        <ListBox x:Name="lstBlockedCategories" HorizontalAlignment="Left" Height="113" Margin="335,53,0,0" VerticalAlignment="Top" Width="196" FontSize="10.667"/>
-        <ListBox x:Name="lstPendingSites" HorizontalAlignment="Left" Height="119" Margin="124,226,0,0" VerticalAlignment="Top" Width="407"/>
+        <Label Content="to" HorizontalAlignment="Left" Height="24" Margin="101,248,0,0" VerticalAlignment="Top" Width="23" RenderTransformOrigin="-1.565,0.5"/>
         
-        <Button x:Name="btnBlockCategory" Content="Add" HorizontalAlignment="Left" Height="21" Margin="125,171,0,0" VerticalAlignment="Top" Width="196" Click="btnBlockCategory_Click"/>
-        <Button x:Name="btnUnblockCategory" Content="Remove" HorizontalAlignment="Left" Height="21" Margin="335,171,0,0" VerticalAlignment="Top" Width="196" Click="btnUnblockCategory_Click"/>
-        <Button x:Name="btnAssignCategory" Content="Assign Category" HorizontalAlignment="Left" Height="29" Margin="430,350,0,0" VerticalAlignment="Top" Width="101" />
+        <ListBox x:Name="lstKeywords" HorizontalAlignment="Left" Height="85" Margin="243,43,0,0" VerticalAlignment="Top" Width="197" FontSize="10.667"/>
+        <ListBox x:Name="lstPendingSites" HorizontalAlignment="Left" Height="119" Margin="18,317,0,0" VerticalAlignment="Top" Width="421"/>
+        <ListBox x:Name="lstBlockedCategories" HorizontalAlignment="Left" Height="85" Margin="18,43,0,0" VerticalAlignment="Top" Width="197" FontSize="10.667" RenderTransformOrigin="0.495,2.148"/>
+        
+        <Button x:Name="btnBlockKeyword" Content="Add" HorizontalAlignment="Left" Height="21" Margin="243,170,0,0" VerticalAlignment="Top" Width="90" />
+        <Button x:Name="btnUnblockKeyword" Content="Remove" HorizontalAlignment="Left" Height="21" Margin="349,170,0,0" VerticalAlignment="Top" Width="90" />
+        <Button x:Name="btnAssignCategory" Content="Assign Category" HorizontalAlignment="Left" Height="29" Margin="338,441,0,0" VerticalAlignment="Top" Width="101" />
+        <Button x:Name="btnBlockCategory" Content="Add" HorizontalAlignment="Left" Height="21" Margin="18,170,0,0" VerticalAlignment="Top" Width="90" Click="btnBlockCategory_Click" />
+        <Button x:Name="btnUnblockCategory" Content="Remove" HorizontalAlignment="Left" Height="21" Margin="125,170,0,0" VerticalAlignment="Top" Width="90" Click="btnUnblockCategory_Click" />
+
+        <TextBox x:Name="txtKeyword" HorizontalAlignment="Left" Height="32" Margin="243,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
+
+        <GroupBox Header="Blocked Keywords" HorizontalAlignment="Left" Height="181" Margin="230,21,0,0" VerticalAlignment="Top" Width="221" Panel.ZIndex="-1" />
+        <GroupBox Header="Blocked Categories" HorizontalAlignment="Left" Height="181" Margin="6,21,0,0" VerticalAlignment="Top" Width="221" Panel.ZIndex="-1"/>
+        <GroupBox Header="Pending Reviews" HorizontalAlignment="Left" Height="183" Margin="6,298,0,0" VerticalAlignment="Top" Width="447" Panel.ZIndex="-1"/>
+        <GroupBox Header="Allowed Time" HorizontalAlignment="Left" Height="74" Margin="6,219,0,0" VerticalAlignment="Top" Width="447" Panel.ZIndex="-1"/>
     </Grid>
 </Window>
