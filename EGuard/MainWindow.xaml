@@ -72,8 +72,8 @@
         <ListBox x:Name="lstBlockedCategories" HorizontalAlignment="Left" Height="113" Margin="335,53,0,0" VerticalAlignment="Top" Width="196" FontSize="10.667"/>
         <ListBox x:Name="lstPendingSites" HorizontalAlignment="Left" Height="119" Margin="124,226,0,0" VerticalAlignment="Top" Width="407"/>
         
-        <Button x:Name="btnBlockCategory" Content="Add" HorizontalAlignment="Left" Height="21" Margin="125,171,0,0" VerticalAlignment="Top" Width="196"/>
-        <Button x:Name="btnUnblockCategory" Content="Remove" HorizontalAlignment="Left" Height="21" Margin="335,171,0,0" VerticalAlignment="Top" Width="196"/>
+        <Button x:Name="btnBlockCategory" Content="Add" HorizontalAlignment="Left" Height="21" Margin="125,171,0,0" VerticalAlignment="Top" Width="196" Click="btnBlockCategory_Click"/>
+        <Button x:Name="btnUnblockCategory" Content="Remove" HorizontalAlignment="Left" Height="21" Margin="335,171,0,0" VerticalAlignment="Top" Width="196" Click="btnUnblockCategory_Click"/>
         <Button x:Name="btnAssignCategory" Content="Assign Category" HorizontalAlignment="Left" Height="29" Margin="430,350,0,0" VerticalAlignment="Top" Width="101" />
     </Grid>
 </Window>
