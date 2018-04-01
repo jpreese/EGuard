@@ -20,7 +20,9 @@ namespace EGuard
 
         public void Start()
         {
-            var explicitEndPoint = new ExplicitProxyEndPoint(IPAddress.Any, 8000, true);
+            const int DEFAULT_PORT = 8000;
+            var explicitEndPoint = new ExplicitProxyEndPoint(IPAddress.Any, DEFAULT_PORT, true);
+
             ProxyServer.AddEndPoint(explicitEndPoint);
 
             ProxyServer.BeforeRequest += OnRequest;
