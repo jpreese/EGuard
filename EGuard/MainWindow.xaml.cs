@@ -28,6 +28,8 @@ namespace EGuard
             lstBlockedCategories.ItemsSource = _categoryRepository.GetBlockedCategories();
             cboAssignableCategories.ItemsSource = _categoryRepository.GetAllCategories();
             lstKeywords.ItemsSource = _keywordRepository.GetAllKeywords();
+
+            proxy.Start();
         }
 
         private void btnUnblockCategory_Click(object sender, RoutedEventArgs e)
