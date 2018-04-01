@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using EGuard.Data;
 using EGuard.Data.Models;
+using EGuard.Reporting;
 using System.ComponentModel;
 
 namespace EGuard
