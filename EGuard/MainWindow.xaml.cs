@@ -77,6 +77,12 @@ namespace EGuard
 
         private void btnLock_Click(object sender, RoutedEventArgs e)
         {
+            Primary.IsEnabled = false;
+        }
+
+        private void btnUnlock_Click(object sender, RoutedEventArgs e)
+        {
+            Primary.IsEnabled = true;
         }
     }
 }
