@@ -32,15 +32,7 @@ namespace EGuard
 
         private void OnRequest(object sender, SessionEventArgs e)
         {
-            var acceptHeader = e.ProxySession.Request.RequestHeaders.Find(h => h.Name == "Accept");
-            var referer = e.ProxySession.Request.RequestHeaders.Find(h => h.Name == "Referer");
-
-            if(referer != null)
-            {
-                return;
-            }
-
-            if (acceptHeader == null || acceptHeader.Value.Contains("text/html") == false)
+            if(IsValidRequest(e) == false)
             {
                 return;
             }
@@ -51,6 +43,24 @@ namespace EGuard
             };
 
             _siteLogger.Log(site);
+        }
+
+        private bool IsValidRequest(SessionEventArgs e)
+        {
+            var acceptHeader = e.ProxySession.Request.RequestHeaders.Find(h => h.Name == "Accept");
+            var referer = e.ProxySession.Request.RequestHeaders.Find(h => h.Name == "Referer");
+
+            if (referer != null)
+            {
+                return false;
+            }
+
+            if (acceptHeader == null || acceptHeader.Value.Contains("text/html") == false)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
