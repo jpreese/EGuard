@@ -1,4 +1,5 @@
-﻿using StructureMap;
+﻿using EGuard.Data.Models;
+using StructureMap;
 using StructureMap.Graph;
 using System.Data;
 using System.Data.SQLite;
