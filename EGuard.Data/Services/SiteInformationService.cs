@@ -5,7 +5,7 @@ using EGuard.Data.Models;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 
-namespace EGuard.Data
+namespace EGuard.Data.Services
 {
     public class SiteInformationService : ISiteInformationService
     {
