@@ -15,9 +15,9 @@ namespace EGuard.Data
             _database = database;
         }
 
-        public IEnumerable<Site> GetByDate(DateTime date)
+        public IEnumerable<Site> GetLogs()
         {
-            throw new NotImplementedException();
+            return _database.Query<Site>("SELECT Url, Date FROM Site");
         }
 
         public void Log(Site data)
