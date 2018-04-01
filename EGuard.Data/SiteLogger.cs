@@ -22,7 +22,7 @@ namespace EGuard.Data
 
         public void Log(Site data)
         {
-            _database.Execute("INSERT INTO Site(Url, Date) VALUES(@Url, @Date)", new { Url = data.Url, Date = data.Date });
+            _database.Execute("INSERT INTO Site(Url, Date) VALUES(@Url, @Date)", new { Url = data.Url, Date = DateTime.Now });
         }
     }
 }
