@@ -5,7 +5,7 @@ namespace EGuard.Data
 {
     public interface ILog<T>
     {
-        IEnumerable<T> GetByDate(DateTime date);
+        IEnumerable<T> GetLogs();
 
         void Log(T data);
     }
