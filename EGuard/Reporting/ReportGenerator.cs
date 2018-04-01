@@ -2,7 +2,7 @@
 using EGuard.Data.Models;
 using System.IO;
 
-namespace EGuard
+namespace EGuard.Reporting
 {
     public class ReportGenerator : Report
     {
