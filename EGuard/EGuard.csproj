@@ -84,9 +84,9 @@
     </Compile>
     <Compile Include="PasswordValidator.cs" />
     <Compile Include="ProxyFacade.cs" />
-    <Compile Include="Report.cs" />
-    <Compile Include="ReportGenerator.cs" />
-    <Compile Include="ReportViewer.cs" />
+    <Compile Include="Reporting\Report.cs" />
+    <Compile Include="Reporting\ReportGenerator.cs" />
+    <Compile Include="Reporting\ReportViewer.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
