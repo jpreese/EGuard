@@ -75,16 +75,18 @@
             <Button x:Name="btnAssignCategory" Content="Assign Category" HorizontalAlignment="Left" Height="29" Margin="338,441,0,0" VerticalAlignment="Top" Width="101" Click="btnAssignCategory_Click" />
             <Button x:Name="btnBlockCategory" Content="Add" HorizontalAlignment="Left" Height="29" Margin="18,170,0,0" VerticalAlignment="Top" Width="90" Click="btnBlockCategory_Click" />
             <Button x:Name="btnUnblockCategory" Content="Remove" HorizontalAlignment="Left" Height="29" Margin="125,170,0,0" VerticalAlignment="Top" Width="90" Click="btnUnblockCategory_Click" />
-            <Button x:Name="btnLock" Content="Lock" HorizontalAlignment="Left" Height="29" Margin="17,492,0,0" VerticalAlignment="Top" Width="90" Click="btnLock_Click"/>
-
+            <Button x:Name="btnLock" Content="Lock" HorizontalAlignment="Left" Height="29" Margin="147,486,0,0" VerticalAlignment="Top" Width="90" Click="btnLock_Click"/>
+            <Button x:Name="btnCreateReport" Content="Create Report" HorizontalAlignment="Left" Height="29" Margin="18,486,0,0" VerticalAlignment="Top" Width="90" Click="btnCreateReport_Click"/>
+            
             <TextBox x:Name="txtKeyword" HorizontalAlignment="Left" Height="32" Margin="243,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
 
             <GroupBox Header="Blocked Keywords" HorizontalAlignment="Left" Height="190" Margin="230,21,0,0" VerticalAlignment="Top" Width="221" Panel.ZIndex="-1" />
             <GroupBox Header="Blocked Categories" HorizontalAlignment="Left" Height="190" Margin="6,21,0,0" VerticalAlignment="Top" Width="221" Panel.ZIndex="-1"/>
             <GroupBox Header="Pending Reviews" HorizontalAlignment="Left" Height="183" Margin="6,298,0,0" VerticalAlignment="Top" Width="447" Panel.ZIndex="-1"/>
             <GroupBox Header="Allowed Time" HorizontalAlignment="Left" Height="74" Margin="6,219,0,0" VerticalAlignment="Top" Width="447" Panel.ZIndex="-1"/>
-            <Image x:Name="image" HorizontalAlignment="Left" Height="29" Margin="362,492,-30,0" VerticalAlignment="Top" Width="137" Source="/Resources/logo.jpg" Panel.ZIndex="1"/>
+
+            <Image x:Name="image" HorizontalAlignment="Left" Height="29" Margin="364,486,-32,0" VerticalAlignment="Top" Width="137" Source="/Resources/logo.jpg" Panel.ZIndex="1"/>
         </Grid>
-        <Button x:Name="btnUnlock" Content="Unlock" HorizontalAlignment="Left" Height="29" Margin="125,492,0,0" VerticalAlignment="Top" Width="90" Click="btnUnlock_Click"/>
+        <Button x:Name="btnUnlock" Content="Unlock" HorizontalAlignment="Left" Height="30" Margin="242,486,0,0" VerticalAlignment="Top" Width="90" Click="btnUnlock_Click"/>
     </Grid>
 </Window>
