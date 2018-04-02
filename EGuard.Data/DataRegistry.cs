@@ -1,4 +1,4 @@
-﻿using EGuard.Data.Models;
+﻿using EGuard.Data.Services;
 using StructureMap;
 using StructureMap.Graph;
 using System.Data;
