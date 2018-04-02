@@ -1,7 +1,7 @@
 ﻿using EGuard.Data.Models;
 using System.Threading.Tasks;
 
-namespace EGuard.Data
+namespace EGuard.Data.Services
 {
     public interface ISiteVerificationService
     {

@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using EGuard.Data;
+using EGuard.Data.Repositories;
 using EGuard.Data.Models;
 using EGuard.Reporting;
 using System.ComponentModel;

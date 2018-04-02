@@ -1,4 +1,4 @@
-﻿namespace EGuard.Data
+﻿namespace EGuard.Data.Repositories
 {
     public interface IRepository<T>
     {
