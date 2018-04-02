@@ -74,6 +74,7 @@
     <Compile Include="Models\Password.cs" />
     <Compile Include="Models\Site.cs" />
     <Compile Include="Services\PasswordService.cs" />
+    <Compile Include="Services\PasswordServiceProxy.cs" />
     <Compile Include="Services\SiteInformationService.cs" />
     <Compile Include="DataRegistry.cs" />
     <Compile Include="ICategoryRepository.cs" />
