@@ -10,7 +10,7 @@
         <Grid x:Name="Primary">
             <ComboBox x:Name="cboAssignableCategories" HorizontalAlignment="Left" Height="29" Margin="18,441,0,0" VerticalAlignment="Top" Width="315"/>
             <ComboBox x:Name="cboBlockableCategories" HorizontalAlignment="Left" Height="32" Margin="18,133,0,0" VerticalAlignment="Top" Width="197"/>
-            <ComboBox x:Name="cboStartTime" HorizontalAlignment="Left" Height="29" Margin="17,248,0,0" VerticalAlignment="Top" Width="72" SelectedIndex="9">
+            <ComboBox x:Name="cboStartTime" HorizontalAlignment="Left" Height="29" Margin="17,248,0,0" VerticalAlignment="Top" Width="72" SelectedIndex="9" SelectedValuePath="Content">
                 <ComboBoxItem>00:00</ComboBoxItem>
                 <ComboBoxItem>01:00</ComboBoxItem>
                 <ComboBoxItem>02:00</ComboBoxItem>
@@ -37,7 +37,7 @@
                 <ComboBoxItem>23:00</ComboBoxItem>
             </ComboBox>
 
-            <ComboBox x:Name="cboEndTime" HorizontalAlignment="Left" Height="29" Margin="139,248,0,0" VerticalAlignment="Top" Width="72" SelectedIndex="17">
+            <ComboBox x:Name="cboEndTime" HorizontalAlignment="Left" Height="29" Margin="139,248,0,0" VerticalAlignment="Top" Width="72" SelectedIndex="17" SelectedValuePath="Content">
                 <ComboBoxItem>00:00</ComboBoxItem>
                 <ComboBoxItem>01:00</ComboBoxItem>
                 <ComboBoxItem>02:00</ComboBoxItem>
