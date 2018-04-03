@@ -16,7 +16,7 @@ namespace EGuard.Data.Services
 
         public Authorization GetAuthorization()
         {
-            return _database.Query<Authorization>("SELECT Password FROM Authorization").SingleOrDefault();
+            return _database.Query<Authorization>("SELECT Email,Password FROM Authorization").SingleOrDefault();
         }
     }
 }
