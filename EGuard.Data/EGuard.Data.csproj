@@ -63,7 +63,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\SiteCategory.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\IKeywordRepository.cs" />
     <Compile Include="Repositories\ISiteCategoryRepository.cs" />
