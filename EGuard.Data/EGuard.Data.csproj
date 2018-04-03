@@ -63,8 +63,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\SiteCategory.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\IKeywordRepository.cs" />
+    <Compile Include="Repositories\ISiteCategoryRepository.cs" />
+    <Compile Include="Repositories\SiteCategoryRepository.cs" />
     <Compile Include="Services\IAuthorizationService.cs" />
     <Compile Include="Services\ISiteInformationService.cs" />
     <Compile Include="ILog.cs" />
