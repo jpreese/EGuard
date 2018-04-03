@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace EGuard.Data.Repositories
 {
-    class SiteCategoryRepository : ISiteCategoryRepository
+    public class SiteCategoryRepository : ISiteCategoryRepository
     {
         private readonly IDbConnection _database;
 
@@ -15,24 +15,24 @@ namespace EGuard.Data.Repositories
             _database = database;
         }
 
-        public void Add(SiteCategory model)
+        public void Add(Site model)
         {
-            _database.Execute("INSERT INTO Site_Category(Url, Category) VALUES(@Url, @Category)", new { Site = model.Site.Url, model.Category.Name });
+            _database.Execute("INSERT INTO Site_Category(Url, Category) VALUES(@Url, @Category)", new { Url = model.Url, Category = model.Category });
         }
 
-        public void Delete(SiteCategory model)
+        public void Delete(Site model)
         {
-            _database.Execute("DELETE FROM Site_Category WHERE Url = @Url AND Category = @Category", new { Url = model.Site.Url, model.Category.Name });
+            _database.Execute("DELETE FROM Site_Category WHERE Url = @Url", new { Url = model.Url });
         }
 
-        public SiteCategory Get(SiteCategory model)
+        public Site Get(Site model)
         {
-            return _database.Query("SELECT Url, Category FROM Site_Category WHERE Url = @Url AND Category = @Category", new { Url = model.Site.Url, model.Category.Name }).SingleOrDefault();
+            return _database.Query("SELECT Url FROM Site_Category WHERE Url = @Url", new { Url = model.Url }).SingleOrDefault();
         }
 
-        public IEnumerable<SiteCategory> GetPendingSites()
+        public IEnumerable<Site> GetPendingSites()
         {
-            return _database.Query<SiteCategory>("SELECT Url, Category FROM Site_Category WHERE Category = @Empty", new { Empty = string.Empty });
+            return _database.Query<Site>("SELECT Url FROM Site_Category WHERE Category IS NULL");
         }
     }
 }
