@@ -11,6 +11,7 @@ namespace EGuard
         private readonly StructureMap.IContainer _container;
         private readonly ICategoryRepository _categoryRepository;
         private readonly IKeywordRepository _keywordRepository;
+        private readonly ISiteCategoryRepository _siteCategoryRepository;
         private readonly PasswordValidator _passwordValidator;
         private readonly ReportGenerator _reportGenerator;
         private readonly ReportViewer _reportViewer;
@@ -22,6 +23,7 @@ namespace EGuard
             _container = StructureMap.Container.For<MainRegistry>();
             _categoryRepository = _container.GetInstance<CategoryRepository>();
             _keywordRepository = _container.GetInstance<KeywordRepository>();
+            _siteCategoryRepository = _container.GetInstance<SiteCategoryRepository>();
             _reportGenerator = _container.GetInstance<ReportGenerator>();
             _passwordValidator = _container.GetInstance<PasswordValidator>();
             _reportViewer = _container.GetInstance<ReportViewer>();
@@ -35,6 +37,8 @@ namespace EGuard
             lstBlockedCategories.ItemsSource = _categoryRepository.GetBlockedCategories();
             cboAssignableCategories.ItemsSource = _categoryRepository.GetAllCategories();
             lstKeywords.ItemsSource = _keywordRepository.GetAllKeywords();
+            lstPendingSites.ItemsSource = _siteCategoryRepository.GetPendingSites();
+
 
             //Primary.IsEnabled = false;
             //proxy.Start();
@@ -90,6 +94,17 @@ namespace EGuard
 
         private void btnAssignCategory_Click(object sender, RoutedEventArgs e)
         {
+            var selectedUrl = (Site)lstPendingSites.SelectedItem;
+            var selectedCategory = (Category)cboAssignableCategories.SelectedItem;
+
+            var updatedSite = new Site
+            {
+                Url = selectedUrl.Url,
+                Category = selectedCategory.Name
+            };
+
+            _siteCategoryRepository.UpdateWithCategory(updatedSite);
+            lstPendingSites.ItemsSource = _siteCategoryRepository.GetPendingSites();
         }
 
         private void btnLock_Click(object sender, RoutedEventArgs e)
