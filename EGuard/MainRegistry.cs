@@ -1,4 +1,5 @@
 ﻿using EGuard.Data;
+using EGuard.Emailing;
 using StructureMap;
 using StructureMap.Graph;
 
@@ -16,6 +17,8 @@ namespace EGuard
 
                 s.AssemblyContainingType<DataRegistry>();
             });
+
+            For<IMessageBuilder>().Use<UnidentifiedCategoryMessageBuilder>();
         }
     }
 }
