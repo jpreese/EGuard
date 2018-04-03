@@ -1,4 +1,6 @@
-﻿namespace EGuard.Emailing
+﻿using System.Net.Mail;
+
+namespace EGuard.Emailing
 {
     public class EmailComposer : IEmailComposer
     {
@@ -9,7 +11,7 @@
             _builder = builder;
         }
 
-        public Message Compose()
+        public MailMessage Compose()
         {
             _builder.SetTo();
             _builder.SetFrom();
