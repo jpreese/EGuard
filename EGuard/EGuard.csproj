@@ -78,6 +78,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Emailing\EmailComposer.cs" />
+    <Compile Include="Emailing\IEmailComposer.cs" />
+    <Compile Include="Emailing\IMessageBuilder.cs" />
+    <Compile Include="Emailing\Message.cs" />
+    <Compile Include="Emailing\UnidentifiedCategoryMessageBuilder.cs" />
     <Compile Include="MainRegistry.cs" />
     <Compile Include="PasswordDialog.xaml.cs">
       <DependentUpon>PasswordDialog.xaml</DependentUpon>
