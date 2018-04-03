@@ -6,5 +6,6 @@ namespace EGuard.Data.Repositories
     public interface ISiteCategoryRepository : IRepository<Site>
     {
         IEnumerable<Site> GetPendingSites();
+        void UpdateWithCategory(Site site);
     }
 }
