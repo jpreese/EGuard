@@ -7,9 +7,8 @@ namespace EGuard.Rules
     {
         public bool Check(Site site)
         {
-            var primary = new MainWindow();
-            var startTime = TimeSpan.Parse(primary.cboStartTime.SelectedValue.ToString());
-            var endTime = TimeSpan.Parse(primary.cboEndTime.SelectedValue.ToString());
+            var startTime = TimeSpan.Parse(MainWindow.ViewModel.StartTime);
+            var endTime = TimeSpan.Parse(MainWindow.ViewModel.EndTime);
             var requestTime = TimeSpan.Parse(site.Date);
 
             var withinAllowedTime = requestTime >= startTime && requestTime <= endTime;
