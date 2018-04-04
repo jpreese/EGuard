@@ -11,6 +11,8 @@ namespace EGuard.Rules
         private readonly UnidentifiedCategoryMailer _unidentifiedCategoryMailer;
         private readonly ISiteCategoryRepository _siteCategoryRepository;
 
+        public int Priority { get; } = 3;
+
         public UnidentifiedCategoryRule(ISiteInformationService siteInformationService, UnidentifiedCategoryMailer unidentifiedCategoryMailer, ISiteCategoryRepository siteCategoryRepository)
         {
             _siteInformationService = siteInformationService;
