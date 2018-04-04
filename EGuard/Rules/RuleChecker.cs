@@ -1,7 +1,5 @@
 ﻿using EGuard.Data.Models;
-using EGuard.Data.Repositories;
-using EGuard.Data.Services;
-using EGuard.Emailing;
+using StructureMap.TypeRules;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,22 +7,6 @@ namespace EGuard.Rules
 {
     public class RuleChecker
     {
-        private readonly ISiteInformationService _siteInformationService;
-        private readonly ICategoryRepository _categoryRepository;
-        private readonly UnidentifiedCategoryMailer _unidentifiedCategoryMailer;
-        private readonly ISiteCategoryRepository _siteCategoryRepository;
-
-        public RuleChecker(ISiteInformationService siteInformationService, 
-            ICategoryRepository categoryRepository, 
-            UnidentifiedCategoryMailer unidentifiedCategoryMailer, 
-            ISiteCategoryRepository siteCategoryRepository)
-        {
-            _siteInformationService = siteInformationService;
-            _categoryRepository = categoryRepository;
-            _unidentifiedCategoryMailer = unidentifiedCategoryMailer;
-            _siteCategoryRepository = siteCategoryRepository;
-        }
-
         public bool CheckRules(Site site)
         {
             return GetRules().All(r => r.Check(site));
@@ -32,12 +14,17 @@ namespace EGuard.Rules
 
         private IList<IRule> GetRules()
         {
-            var rules = new List<IRule>();
-            rules.Add(new TimeRule());
-            rules.Add(new BlockedCategoryRule(_siteInformationService, _categoryRepository));
-            rules.Add(new UnidentifiedCategoryRule(_siteInformationService, _unidentifiedCategoryMailer, _siteCategoryRepository));
+            var container = StructureMap.Container.For<MainRegistry>();
 
-            return rules;
+            var currentAssembly = GetType().GetTypeInfo().Assembly;
+            var requirementRules = currentAssembly
+                .DefinedTypes
+                .Where(type => type.ImplementedInterfaces.Any(i => i == typeof(IRule)))
+                .Select(type => (IRule)container.GetInstance(type))
+                .OrderBy(rule => rule.Priority)
+                .ToList();
+
+            return requirementRules;
         }
     }
 }
