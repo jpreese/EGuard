@@ -3,7 +3,6 @@ using System.Data;
 using Dapper;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace EGuard.Data.Repositories
 {

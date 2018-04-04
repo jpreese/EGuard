@@ -1,5 +1,4 @@
-﻿using EGuard.Data;
-using EGuard.Data.Services;
+﻿using EGuard.Data.Services;
 
 namespace EGuard
 {
