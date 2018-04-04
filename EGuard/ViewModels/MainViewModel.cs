@@ -34,19 +34,6 @@ namespace EGuard.ViewModels
             }
         }
 
-        public string Test
-        {
-            get
-            {
-                return _test;
-            }
-            set
-            {
-                _test = value;
-                OnPropertyChanged("Test");
-            }
-        }
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyName)
