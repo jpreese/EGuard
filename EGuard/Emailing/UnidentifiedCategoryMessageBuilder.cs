@@ -2,7 +2,7 @@
 
 namespace EGuard.Emailing
 {
-    class UnidentifiedCategoryMessageBuilder : IMessageBuilder
+    public class UnidentifiedCategoryMessageBuilder : IMessageBuilder
     {
         private MailMessage message;
 
