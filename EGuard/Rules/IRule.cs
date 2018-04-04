@@ -1,7 +1,9 @@
-﻿namespace EGuard.Rules
+﻿using EGuard.Data.Models;
+
+namespace EGuard.Rules
 {
     public interface IRule
     {
-        bool Check();
+        bool Check(Site site);
     }
 }
