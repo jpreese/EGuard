@@ -21,7 +21,7 @@ namespace EGuard.Rules
         public bool Check(Site site)
         {
             var category = _siteInformationService.GetSiteInformationAsync(site.Url).Result;
-            if(category.Equals("Uncategorized"))
+            if(category.Categorization.Equals("Uncategorized"))
             {
                 _unidentifiedCategoryMailer.SendMail();
                 _siteCategoryRepository.Add(site);
