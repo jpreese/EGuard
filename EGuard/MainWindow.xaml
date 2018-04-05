@@ -73,7 +73,7 @@
             <Label Content="to" HorizontalAlignment="Left" Height="24" Margin="101,248,0,0" VerticalAlignment="Top" Width="23" RenderTransformOrigin="-1.565,0.5"/>
 
             <ListBox x:Name="lstKeywords" HorizontalAlignment="Left" Height="85" Margin="243,43,0,0" VerticalAlignment="Top" Width="197" FontSize="10.667"/>
-            <ListBox x:Name="lstPendingSites" HorizontalAlignment="Left" Height="119" Margin="18,317,0,0" VerticalAlignment="Top" Width="421"/>
+            <ListBox x:Name="lstPendingSites" HorizontalAlignment="Left" Height="119" Margin="18,317,0,0" VerticalAlignment="Top" Width="421" ItemsSource="{Binding PendingUrls}"/>
             <ListBox x:Name="lstBlockedCategories" HorizontalAlignment="Left" Height="85" Margin="18,43,0,0" VerticalAlignment="Top" Width="197" FontSize="10.667" RenderTransformOrigin="0.495,2.148"/>
 
             <Button x:Name="btnBlockKeyword" Content="Add" HorizontalAlignment="Left" Height="29" Margin="243,170,0,0" VerticalAlignment="Top" Width="90" Click="btnBlockKeyword_Click" />
