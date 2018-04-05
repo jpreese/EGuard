@@ -23,21 +23,17 @@ namespace EGuard
         {
             InitializeComponent();
 
-            ViewModel = new MainViewModel
-            {
-                StartTime = "09:00",
-                EndTime = "17:00"
-            };
-
-            DataContext = ViewModel;
-
             _container = StructureMap.Container.For<MainRegistry>();
+
             _categoryRepository = _container.GetInstance<CategoryRepository>();
             _keywordRepository = _container.GetInstance<KeywordRepository>();
             _siteCategoryRepository = _container.GetInstance<SiteCategoryRepository>();
             _reportGenerator = _container.GetInstance<ReportGenerator>();
             _passwordValidator = _container.GetInstance<PasswordValidator>();
             _reportViewer = _container.GetInstance<ReportViewer>();
+
+            ViewModel = _container.GetInstance<MainViewModel>();
+            DataContext = ViewModel;
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -48,7 +44,6 @@ namespace EGuard
             lstBlockedCategories.ItemsSource = _categoryRepository.GetBlockedCategories();
             cboAssignableCategories.ItemsSource = _categoryRepository.GetAllCategories();
             lstKeywords.ItemsSource = _keywordRepository.GetAllKeywords();
-            lstPendingSites.ItemsSource = _siteCategoryRepository.GetPendingSites();
 
             //Primary.IsEnabled = false;
             //proxy.Start();
@@ -114,7 +109,6 @@ namespace EGuard
             };
 
             _siteCategoryRepository.UpdateWithCategory(updatedSite);
-            lstPendingSites.ItemsSource = _siteCategoryRepository.GetPendingSites();
         }
 
         private void btnLock_Click(object sender, RoutedEventArgs e)
