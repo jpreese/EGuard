@@ -30,9 +30,9 @@ namespace EGuard.Data.Repositories
             return _database.Query("SELECT Url FROM Site_Category WHERE Url = @Url", new { Url = model.Url }).SingleOrDefault();
         }
 
-        public IEnumerable<Site> GetPendingSites()
+        public IEnumerable<string> GetPendingUrls()
         {
-            return _database.Query<Site>("SELECT Url FROM Site_Category WHERE Category IS NULL");
+            return _database.Query<string>("SELECT Url FROM Site_Category WHERE Category IS NULL");
         }
 
         public void UpdateWithCategory(Site site)
