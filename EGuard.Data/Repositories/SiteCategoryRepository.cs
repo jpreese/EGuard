@@ -15,19 +15,19 @@ namespace EGuard.Data.Repositories
             _database = database;
         }
 
-        public void Add(Site model)
+        public void Add(string url)
         {
-            _database.Execute("INSERT INTO Site_Category(Url, Category) VALUES(@Url, @Category)", new { Url = model.Url, Category = model.Category });
+            _database.Execute("INSERT INTO Site_Category(Url) VALUES(@Url)", new { Url = url });
         }
 
-        public void Delete(Site model)
+        public void Delete(string url)
         {
-            _database.Execute("DELETE FROM Site_Category WHERE Url = @Url", new { Url = model.Url });
+            _database.Execute("DELETE FROM Site_Category WHERE Url = @Url", new { Url = url });
         }
 
-        public Site Get(Site model)
+        public string Get(string url)
         {
-            return _database.Query("SELECT Url FROM Site_Category WHERE Url = @Url", new { Url = model.Url }).SingleOrDefault();
+            return _database.Query("SELECT Url FROM Site_Category WHERE Url = @Url", new { Url = url }).SingleOrDefault();
         }
 
         public IEnumerable<string> GetPendingUrls()
