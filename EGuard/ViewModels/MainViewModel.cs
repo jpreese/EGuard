@@ -1,11 +1,9 @@
-﻿using EGuard.Data.Models;
-using EGuard.Data.Repositories;
+﻿using EGuard.Data.Repositories;
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows;
-using System.Windows.Data;
 using System.Windows.Threading;
 
 namespace EGuard.ViewModels
