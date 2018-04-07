@@ -1,6 +1,12 @@
-﻿using EGuard.Data.Repositories;
+﻿using EGuard.Data.Models;
+using EGuard.Data.Repositories;
+using System;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Windows;
+using System.Windows.Data;
+using System.Windows.Threading;
 
 namespace EGuard.ViewModels
 {
@@ -8,7 +14,9 @@ namespace EGuard.ViewModels
     {
         private string _startTime;
         private string _endTime;
+
         private ObservableCollection<string> _pendingUrls = new ObservableCollection<string>();
+        private readonly object _collectionLock = new object();
 
         private readonly ISiteCategoryRepository _siteCategoryRepository;
 
@@ -17,7 +25,9 @@ namespace EGuard.ViewModels
             _siteCategoryRepository = siteCategoryRepository;
             _startTime = "09:00";
             _endTime = "17:00";
+
             _pendingUrls = new ObservableCollection<string>(_siteCategoryRepository.GetPendingUrls());
+            _pendingUrls.CollectionChanged += OnPendingUrlsChanged;
         }
 
         public string StartTime
@@ -46,16 +56,32 @@ namespace EGuard.ViewModels
             }
         }
 
-        public ObservableCollection<string> PendingSites
+        public ObservableCollection<string> PendingUrls
         {
             get
             {
                 return _pendingUrls;
             }
-            set
+        }
+
+        public void AddPendingUrl(string url)
+        {
+            lock (_collectionLock)
             {
-                _pendingUrls = value;
-                OnPropertyChanged("PendingSites");
+                Action action = () =>
+                {
+                    _pendingUrls.Add(url);
+                };
+
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, action);
+            }
+        }
+
+        private void OnPendingUrlsChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if(e.Action == NotifyCollectionChangedAction.Add)
+            {
+                _siteCategoryRepository.Add((string)e.NewItems[0]);
             }
         }
 
