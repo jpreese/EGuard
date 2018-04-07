@@ -16,6 +16,7 @@ namespace EGuard
         private readonly PasswordValidator _passwordValidator;
         private readonly ReportGenerator _reportGenerator;
         private readonly ReportViewer _reportViewer;
+        private readonly KeyboardListener _keyboardListener;
 
         public static MainViewModel ViewModel;
 
@@ -31,6 +32,7 @@ namespace EGuard
             _reportGenerator = _container.GetInstance<ReportGenerator>();
             _passwordValidator = _container.GetInstance<PasswordValidator>();
             _reportViewer = _container.GetInstance<ReportViewer>();
+            _keyboardListener = new KeyboardListener();
 
             ViewModel = _container.GetInstance<MainViewModel>();
             DataContext = ViewModel;
@@ -45,8 +47,15 @@ namespace EGuard
             cboAssignableCategories.ItemsSource = _categoryRepository.GetAllCategories();
             lstKeywords.ItemsSource = _keywordRepository.GetAllKeywords();
 
+            _keyboardListener.KeyDown += new RawKeyEventHandler(KeyListener_KeyDown);
+
             Primary.IsEnabled = false;
-            proxy.Start();
+            //proxy.Start();
+        }
+
+        private void KeyListener_KeyDown(object sender, RawKeyEventArgs args)
+        {
+            ViewModel.KeyPresses += args.ToString();
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -54,6 +63,7 @@ namespace EGuard
             if(_passwordValidator.Validate())
             {
                 base.OnClosing(e);
+                _keyboardListener.Dispose();
                 return;
             }
 
